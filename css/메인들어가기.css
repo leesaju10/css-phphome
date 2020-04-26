@@ -1,0 +1,75 @@
+.main_wrap{
+    width: 1624px;
+    height : auto;
+    margin : 0 auto;
+}
+.main_section{
+    width: 1624px;
+    height:300px;
+    margin : 0 auto;
+}
+.main_back{
+    width:auto;
+    height:1200px;
+    background-image: url(../ky.jpg);
+    background-size: 1624px 1200px;
+}
+.main_back_over{
+    width:1624px;
+    height:1200px;
+    position: absolute;
+    top:0px;
+    background-color: rgba( 0, 0, 0, 0.5 );
+}
+/*main section 끝*/
+
+.main_logo{
+    display: block;
+    position: relative;
+    top : 300px;
+    width: 900px;
+    height: 600px;
+    background-image: url(../main_logo.png);
+    background-size: 900px 600px;
+    margin : 0 auto;
+}
+.main_logo .else{
+    position: relative;
+    top : 270px;
+    left : 60px;
+    width: 234px;
+    height : 315px;
+    display: inline-block;
+}
+.main_logo .login{
+    position: relative;
+    top : 270px;
+    left : 100px;
+    width: 234px;
+    height : 315px;
+    display: inline-block;
+}
+.main_logo .diet{
+    position: relative;
+    top : 270px;
+    left : 137px;
+    width: 234px;
+    height : 315px;
+    display: inline-block;
+}
+/*logo section 끝*/
+.footer_wrap{
+    width: auto;
+    min-width: 1624px;
+    height: 50px;
+    margin: 0  auto;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+.footer_text{
+    display: inline-block;
+    margin: 18px 0;
+}
+/*footer 끝*/
