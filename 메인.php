@@ -80,7 +80,9 @@ mysqli_query($conn,"set session character_set_connection=utf8");
                             <a href='#'>회원정보관리 가기</a>
                             <br><br>
                             <a href='./action_php/로그아웃.php'>로그아웃</a>
-                    </div>";}
+                    ";}
+if($id == "admin"){echo "<br><br><a href='./메인_관리자페이지.php'>관리자페이지</a></div>";}
+else{echo "</div>";}
                     ?>
                 </div>
                 
@@ -96,7 +98,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 				    $num = $row2['num'];
                                     $title = $row2['title'];
                                     $writer = $row2['writer'];
-                                    $date = $row2['date'];
+
 		echo "<li>작성자($writer) 제목: <a href='./글읽기_공지사항.php?idx=$num' style='color : black; display : inline-block; padding : 5px 5px;'>$title</a></li>";
 
 }

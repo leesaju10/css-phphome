@@ -2,7 +2,7 @@
 
 $id=$_SESSION['id'];
 
-if ($id !=NULL || $id !="admin") {
+if ($id !="admin") {
     echo "<script>
             alert('잘못된 접근 입니다.');
             location.href='메인.php';
@@ -78,7 +78,9 @@ mysqli_query($conn,"set session character_set_connection=utf8");
                             <a href='#'>회원정보관리 가기</a>
                             <br><br>
                             <a href='./action_php/로그아웃.php'>로그아웃</a>
-                    </div>";}
+                    ";}
+if($id == "admin"){echo "<br><br><a href='./메인_관리자페이지.php'>관리자페이지</a></div>";}
+else{echo "</div>";}
                     ?>
                 </div>
 
@@ -129,7 +131,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
                                 <td>$nickname</td>
                                 <td>$email</td>
                                 <td>$phone</td>
-                                <td><a href='./action_php/회원탈퇴시키기.php?idx=$num'>탈퇴시키기</td>
+                                <td><a style='color : black;'href='./action_php/회원탈퇴시키기.php?idx=$num'>탈퇴시키기</td>
                                 </tr>
                                 ";
                                 }
