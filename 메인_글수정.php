@@ -42,6 +42,8 @@ $content = $row['content'];
             <link rel = "stylesheet" type="text/css" href="./css/메인_글수정.css">
         <meta charset="UTF-8">
         <title>EVERY KY</title>
+        <script src="./logincheck.js"></script>
+        <script src="./Check.js"></script>
 </head>
 <body>
         <header>
@@ -68,7 +70,7 @@ $content = $row['content'];
                     <?php
                     if($id==NULL){
                     echo "<div class='login_form'>
-                        <form action='./action_php/로그인.php' enctype='multipart/form-data' method = 'post'>
+                        <form action='./action_php/로그인.php' enctype='multipart/form-data' method = 'post' onsubmit = 'return loginCheck();'>
                             <label for='id' class='id'>
                                ID : 
                             </label>
@@ -92,14 +94,14 @@ $content = $row['content'];
                             <a href='./action_php/로그아웃.php'>로그아웃</a>
                     ";}
 if($id == "admin"){echo "<br><br><a href='./메인_관리자페이지.php'>관리자페이지</a></div>";}
-else{echo "</div>";}
+else{ if($id!=NULL){echo "</div>";}}
                     ?>
                 </div>
                 
                 <div class="right">
                     <span>글수정</span>
                     <div class = "write">
-                        <form action="./action_php/글수정.php?idx=<?php echo $num ?>" enctype="multipart/form-data" method = "post">
+                        <form action="./action_php/글수정.php?idx=<?php echo $num ?>" enctype="multipart/form-data" method = "post" onsubmit = "return formCheck();">
                             <input type="text" name="title" id="title" placeholder="제목을 입력해주십시오." value="<?php echo $title ?>">
                             <br>
                             <textarea name="content" id="content" placeholder="내용을 입력해주십시오."><?php echo $content ?></textarea>

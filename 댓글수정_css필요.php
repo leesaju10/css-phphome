@@ -19,7 +19,7 @@ $row = mysqli_fetch_array($result);
 $writer = $row['writer'];
 $content = $row['content'];
 $id=$_SESSION['id'];
-	if($id!=$writer){
+	if($id!=$writer){s
 
 		echo "<script>
 			   alert( '작성자가 아니면 수정하실 수 없습니다.' );
@@ -35,9 +35,10 @@ $id=$_SESSION['id'];
     <head>
         <meta charset="utf-8">
         <title>글수정</title>
+        <script src="./Concheck.js"></script>
     </head>
     <body>
-        <form action="댓글진짜수정.php?idx=<?php echo $idx; ?>&article=<?php echo $num; ?>" method = "post">
+        <form action="댓글진짜수정.php?idx=<?php echo $idx; ?>&article=<?php echo $num; ?>" method = "post" onsubmit="return conCheck();">
 	    <?php echo $writer;?>
             <input type="text" name="content" id="content" value="<?php echo $content; ?>">
             <input type="submit" value="댓글수정">

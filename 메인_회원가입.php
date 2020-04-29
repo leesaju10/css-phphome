@@ -18,6 +18,7 @@ if ($id !=NULL) {
             <link rel = "stylesheet" type="text/css" href="./css/메인_회원가입.css">
         <meta charset="UTF-8">
         <title>EVERY KY</title>
+        <script src="./Join.js"></script>
 </head>
 <body>
         <header>
@@ -42,7 +43,7 @@ if ($id !=NULL) {
                 <span>회원가입</span>
                 <div class="sign_in">
 
-                    <form action="./action_php/회원가입.php" accept-charset="utf-8" name = "person_info" method = "post">
+                    <form action="./action_php/회원가입.php" accept-charset="utf-8" name = "person_info" method = "post" onsubmit = "return joinCheck();">
                         <label for="id">
                             ID 
                         </label>

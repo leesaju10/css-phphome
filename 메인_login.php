@@ -18,6 +18,7 @@ if ($id !=NULL) {
             <link rel = "stylesheet" type="text/css" href="./css/메인_login.css">
         <meta charset="UTF-8">
         <title>EVERY KY</title>
+        <script src="./logincheck.js"></script>
 </head>
 <body>
         <header>
@@ -41,7 +42,7 @@ if ($id !=NULL) {
             <div class="main_section">
                 <span>로그인</span>
                     <div class="login_form">
-                        <form action="./action_php/로그인.php" enctype="multipart/form-data" method = "post">
+                        <form action="./action_php/로그인.php" enctype="multipart/form-data" method = "post" onsubmit = "return loginCheck();">
                             <label for="id" class="id">
                                ID : 
                             </label>

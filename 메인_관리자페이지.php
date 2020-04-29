@@ -80,7 +80,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
                             <a href='./action_php/로그아웃.php'>로그아웃</a>
                     ";}
 if($id == "admin"){echo "<br><br><a href='./메인_관리자페이지.php'>관리자페이지</a></div>";}
-else{echo "</div>";}
+else{ if($id!=NULL){echo "</div>";}}
                     ?>
                 </div>
 

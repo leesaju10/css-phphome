@@ -30,6 +30,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
             <link rel = 'stylesheet' type='text/css' href='./css/메인.css'>
         <meta charset='UTF-8'>
         <title>EVERY KY</title>
+        <script src="./logincheck.js"></script>
 </head>
 <body>
         <header>
@@ -57,7 +58,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                     if($id==NULL){
                     echo "<div class='login_form'>
-                        <form action='./action_php/로그인.php' enctype='multipart/form-data' method = 'post'>
+                        <form action='./action_php/로그인.php' enctype='multipart/form-data' method = 'post' onsubmit = 'return loginCheck();'>
                             <label for='id' class='id'>
                                ID : 
                             </label>
@@ -71,7 +72,8 @@ mysqli_query($conn,"set session character_set_connection=utf8");
                             <a href='#'>아이디/비밀번호찾기</a>
                         </form>
                     </div>";}
-                    
+
+
 
                     else {
                     echo "<div class='logined_form'>
@@ -82,7 +84,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
                             <a href='./action_php/로그아웃.php'>로그아웃</a>
                     ";}
 if($id == "admin"){echo "<br><br><a href='./메인_관리자페이지.php'>관리자페이지</a></div>";}
-else{echo "</div>";}
+else{ if($id!=NULL){echo "</div>";}}
                     ?>
                 </div>
                 

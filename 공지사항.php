@@ -113,6 +113,9 @@ mysqli_query($conn,"set session character_set_connection=utf8");
         <meta charset="UTF-8">
 
         <title>EVERY KY</title>
+        <script src="./logincheck.js"></script>
+        <script src="./SearchChk.js"></script>
+
 
 </head>
 
@@ -168,7 +171,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                     echo "<div class='login_form'>
 
-                        <form action='./action_php/로그인.php' enctype='multipart/form-data' method = 'post'>
+                        <form action='./action_php/로그인.php' enctype='multipart/form-data' method = 'post' onsubmit = 'return loginCheck();'>
 
                             <label for='id' class='id'>
 
@@ -214,7 +217,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                             <a href='./action_php/로그아웃.php'>로그아웃</a>
 
-                    ";}if($id == "admin"){echo "<br><br><a href='./메인_관리자페이지.php'>관리자페이지</a></div>";}else{echo "</div>";}
+                    ";}if($id == "admin"){echo "<br><br><a href='./메인_관리자페이지.php'>관리자페이지</a></div>";}else{ if($id!=NULL){echo "</div>";}}
 
                     ?>
 
@@ -333,7 +336,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                     <!--검색 구현 해야함-->
 
-                    <form action="글검색.php" method="get">
+                    <form action="글검색.php" method="get" onsubmit="return SearchCheck();">
 
                         <input type="text" name ="search"><input type="submit" id ="search" value="검색">    
 

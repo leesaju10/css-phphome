@@ -37,6 +37,8 @@ mysqli_query($conn,"set session character_set_connection=utf8");
             <link rel = "stylesheet" type="text/css" href="./css/글읽기.css">
         <meta charset="UTF-8">
         <title>EVERY KY</title>
+        <script src="./logincheck.js"></script>
+        <script src="./Concheck.js"></script>
 </head>
 <body>
         <header>
@@ -63,7 +65,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
                     <?php
                     if($id==NULL){
                     echo "<div class='login_form'>
-                        <form action='./action_php/로그인.php' enctype='multipart/form-data' method = 'post'>
+                        <form action='./action_php/로그인.php' enctype='multipart/form-data' method = 'post' onsubmit = 'return loginCheck();'>
                             <label for='id' class='id'>
                                ID : 
                             </label>
@@ -85,7 +87,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
                             <a href='#'>회원정보관리 가기</a>
                             <br><br>
                             <a href='./action_php/로그아웃.php'>로그아웃</a>
-                    ";}if($id == "admin"){echo "<br><br><a href='./메인_관리자페이지.php'>관리자페이지</a></div>";}else{echo "</div>";}
+                    ";}if($id == "admin"){echo "<br><br><a href='./메인_관리자페이지.php'>관리자페이지</a></div>";}else{ if($id!=NULL){echo "</div>";}}
                     ?>
                 </div>
                 
@@ -119,7 +121,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
                     <div class="reply">
                         <table>
                             <tr>
-                            <form action="./action_php/댓글달기_공지사항.php" method="POST">
+                            <form action="./action_php/댓글달기_공지사항.php" method="POST" onsubmit="return conCheck()">
                                 <input type="hidden" value="<?php echo $id ?>" name = "id" id="id">
                                 <input type="hidden" value="<?php echo $num ?>" name = "idx" id="idx">
                                 <td><?php echo $id;?></td>
