@@ -144,7 +144,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 <td>$id</td>
 <td>$content</td>
 <td>$date</td>
-<td style='width: 90px;'><a href='./action_php/댓글수정.php?idx=$idx&article=$num' >수정</a> <a href='./action_php/댓글삭제.php?idx=$idx&article=$num'>삭제</a></td>
+<td style='width: 90px;'><a href='./댓글수정.php?idx=$idx&article=$num' >수정</a> <a href='./action_php/댓글삭제.php?idx=$idx&article=$num'>삭제</a></td>
 </tr>";
                             
                             };

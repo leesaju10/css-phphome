@@ -11,9 +11,9 @@ $conn = mysqli_connect(
     $sql = "UPDATE `reply_board` SET `content` = '$content' WHERE idx=$idx && article_num=$num";
     $result = mysqli_query($conn,$sql);  
 	if($result){
-	echo "<script>alert('댓글 수정 성공');location.href='글읽기.php?idx=$num';</script>";
+	echo "<script>alert('댓글 수정 성공');location.href='../글읽기.php?idx=$num';</script>";
 	}
 	else{
-	echo "<script>alert('댓글 수정 실패');location.href='글읽기.php?idx=$num';</script>";
+	echo "<script>alert('댓글 수정 실패');location.href='../글읽기.php?idx=$num';</script>";
 	}
 ?>

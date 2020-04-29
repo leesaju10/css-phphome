@@ -14,6 +14,8 @@ ini_set("display_errors", "1");
     $id=$_SESSION['id'];
     $sql = "SELECT writer FROM `reply_board` WHERE article_num =$num && idx=$idx ";
     $result =  mysqli_query($conn, $sql);
+    $sql2 = "UPDATE `board` SET `reply` = reply-1 WHERE `board`.`num` = $num";
+    $result2 = mysqli_query($conn,$sql2);
     $row = mysqli_fetch_array($result);
     $writer = $row['writer'];
 	if($id==$writer || $id=="admin"){
@@ -22,7 +24,7 @@ ini_set("display_errors", "1");
             if($result){
                 	echo "<script>
 			   alert( '삭제되었습니다.' );
-			      location.href='글읽기.php?idx=$num';
+			      	history.back();
 		      </script>
 		     ";
             }
