@@ -1,6 +1,28 @@
 <?php session_start(); 
 
 $id=$_SESSION['id'];?>
+
+<?php
+
+$conn = mysqli_connect(
+
+  'localhost',
+
+  'admin',
+
+  'Admin1347!',
+
+  'konyang');
+
+
+
+mysqli_query($conn,"set session character_set_client=utf8");
+
+mysqli_query($conn,"set session character_set_results=utf8");
+
+mysqli_query($conn,"set session character_set_connection=utf8");
+
+?>
 <!DOCTYPE html>
 <html lang='ko'>
 <head>
@@ -67,13 +89,35 @@ $id=$_SESSION['id'];?>
                     <div class = 'notice'>
                         <span>공지사항</span>
                         <ul>
-                            <li>글 목록</li>
+                            <?php
+        $sql = "select * from board2 order by num desc limit 10";
+        $result =  mysqli_query($conn, $sql);
+                                while($row2 = mysqli_fetch_array($result)){
+				    $num = $row2['num'];
+                                    $title = $row2['title'];
+                                    $writer = $row2['writer'];
+                                    $date = $row2['date'];
+		echo "<li>작성자($writer) 제목: <a href='./글읽기_공지사항.php?idx=$num' style='color : black; display : inline-block; padding : 5px 5px;'>$title</a></li>";
+
+}
+?>
                         </ul>
                     </div>
                     <div class='community'>
                         <span>커뮤니티</span>
                         <ul>
-                            <li>글 목록</li>
+                            <?php
+        $sql = "select * from board order by num desc limit 10";
+        $result =  mysqli_query($conn, $sql);
+                                while($row2 = mysqli_fetch_array($result)){
+				    $num = $row2['num'];
+                                    $title = $row2['title'];
+                                    $writer = $row2['writer'];
+                                    $date = $row2['date'];
+		echo "<li>작성자($writer) 제목: <a href='./글읽기.php?idx=$num' style='color : black; display : inline-block; padding : 5px 5px;'>$title</a></li>";
+
+}
+?>
                         </ul>
                     </div>
                     </div>
