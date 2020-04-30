@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
 
  function GenerateString($length)  
@@ -50,7 +49,7 @@ if($row['email']!=NULL){
     echo "<script>alert('존재하는 이메일 입니다. 아이디와 임시 비밀번호가 이메일로 전송됩니다.');   </script>";	
 	$sql2 = "UPDATE `Profile` SET `password` = '$encrypted_passwd' WHERE `Profile`.`id` = '$id'";
 $result2 =  mysqli_query($conn, $sql2);	
- echo "<script>location.href='로그인페이지.html'; </script>";
+ echo "<script>location.href='../메인_login.php';</script>";
 }
     else{
 	echo "fail";
@@ -61,7 +60,7 @@ $result2 =  mysqli_query($conn, $sql2);
 }
 else{
     echo "<script> alert('존재하지 않는 이메일 입니다.');
-                    location.href='로그인페이지.html';
+                    location.href='../메인_login.php';
     </script>";
 }
 ?>

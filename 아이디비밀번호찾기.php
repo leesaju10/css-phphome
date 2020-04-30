@@ -15,10 +15,10 @@ if ($id !=NULL) {
 <html lang="ko">
 <head>
             <link rel = "stylesheet" type="text/css" href="./css/reset.css">
-            <link rel = "stylesheet" type="text/css" href="./css/메인_login.css">
+            <link rel = "stylesheet" type="text/css" href="./css/아이디비밀번호찾기.css">
         <meta charset="UTF-8">
         <title>EVERY KY</title>
-        <script src="./logincheck.js"></script>
+        <script src="./Join.js"></script>
 </head>
 <body>
         <header>
@@ -40,23 +40,15 @@ if ($id !=NULL) {
                 </div>
             </div>
             <div class="main_section">
-                <span>로그인</span>
-                    <div class="login_form">
-                        <form action="./action_php/로그인.php" enctype="multipart/form-data" method = "post" onsubmit = "return loginCheck();">
-                            <label for="id" class="id">
-                               ID : 
-                            </label>
-                            <input type="text" name="id" id="id"><br>
-                            <label for="password">
-                                PW  : 
-                            </label>
-                            <input type="password" name="password" id="password"><br>
-                            <input type="submit" value="Login" id="login_button"><br>
-                            <a href="./메인_회원가입.php">회원가입</a>
-                            <a href="./아이디비밀번호찾기.php">아이디/비밀번호찾기</a>
-                        </form>
-                    </div>
-                
+                <span>아이디/비밀번호 찾기</span>
+                <div class="IdPwSearch">
+                    <form action="./action_php/메일전송.php" enctype="multipart/form-data" method = "post">
+                        <input type="text" name="email" id="email" placeholder="이메일을 입력해주세요.">
+                        <br>
+                        <input type="submit" id="submit" value="클릭시 정보 전송">
+                    </form>
+                </div>
+            </div>    
         </div>
         <footer>
             <div class="footer_wrap">    

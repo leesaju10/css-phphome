@@ -6,7 +6,7 @@ $conn = mysqli_connect(
   'konyang');
 ini_set("display_errors", "1");
 		$num = $_GET['idx'];
-	        $sql = 'SELECT * FROM `board` WHERE num ='.$num;
+	        $sql = 'SELECT * FROM `board2` WHERE num ='.$num;
                 $result =  mysqli_query($conn, $sql);
 		$row = mysqli_fetch_array($result);
 		$filename=$row['image'];

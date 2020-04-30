@@ -1,3 +1,16 @@
+<?php session_start(); 
+
+$id=$_SESSION['id'];
+
+if ($id ==NULL) {
+    echo "<script>
+            alert('잘못된 접근 입니다.');
+            location.href='메인.php';
+        </script>";
+}
+
+?>
+
 <?php
 session_start();
 $conn = mysqli_connect(
@@ -10,36 +23,22 @@ mysqli_query($conn,"set session character_set_client=utf8");
 mysqli_query($conn,"set session character_set_results=utf8");
 mysqli_query($conn,"set session character_set_connection=utf8");
 ?>
-<?php 
-
-$num = $_GET["idx"];
-$sql = 'SELECT * FROM `board` WHERE num ='.$num;
-    $result =  mysqli_query($conn, $sql);
+<?php
+$sql = 'SELECT * FROM `Profile` WHERE id ="'.$id.'"';
+$result =  mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
-$title = $row['title'];
-$content = $row['content'];
-
-    $id=$_SESSION['id'];
-    $sql2 = 'SELECT writer FROM `board` WHERE `num` = "'.$num.'"';
-    $result2 =  mysqli_query($conn, $sql2);
-    $row2 = mysqli_fetch_array($result2);
-    $writer = $row2['writer'];
-
-	if($id!=$writer){
-
-		echo "<script>
-			   alert( '작성자가 아니면 수정하실 수 없습니다.' );
-			   history.back();
-		      </script>
-		     ";
-    }
+$name = $row['name'];
+$sex = $row['sex'];
+$email =$row['email'];
+$phone = $row['phone_num'];
+$address=$row['address'];
 ?>
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
             <link rel = "stylesheet" type="text/css" href="./css/reset.css">
-            <link rel = "stylesheet" type="text/css" href="./css/메인_글수정.css">
+            <link rel = "stylesheet" type="text/css" href="./css/회원정보관리.css">
         <meta charset="UTF-8">
         <title>EVERY KY</title>
         <script src="./logincheck.js"></script>
@@ -80,7 +79,7 @@ $content = $row['content'];
                             </label>
                             <input type='password' name='password' id='password'>
                             <input type='submit' value='Login' id='login_button'><br>
-                            <a href='../회원가입페이지/메인_회원가입.html'>회원가입</a>
+                            <a href='./메인_회원가입.php'>회원가입</a>
                             <a href='./아이디비밀번호찾기.php'>아이디/비밀번호찾기</a>
                         </form>
                     </div>";}
@@ -99,17 +98,47 @@ else{ if($id!=NULL){echo "</div>";}}
                 </div>
                 
                 <div class="right">
-                    <span>글수정</span>
-                    <div class = "write">
-                        <form action="./action_php/글수정.php?idx=<?php echo $num ?>" enctype="multipart/form-data" method = "post" onsubmit = "return formCheck();">
-                            <input type="text" name="title" id="title" placeholder="제목을 입력해주십시오." value="<?php echo $title ?>">
-                            <br>
-                            <textarea name="content" id="content" placeholder="내용을 입력해주십시오."><?php echo $content ?></textarea>
-                            <br>
-                            <input type="file" name="image">
-                            <br>
-                            <input type="submit" value="글쓰기" id="write">
-                        </form>
+                    <span>회원정보관리</span>
+                    <div class = "form">
+                    <form action="./action_php/회원정보수정.php" method = "post">
+                       <span> 아이디 : </span> <?php echo "$id";?>
+                        <br>
+                        <label for="password">
+                            패스워드  : 
+                        </label>
+                        <input type="password" name="password" id="password">
+                        <br>
+                        <label for="password2">
+                            패스워드 확인 : 
+                        </label>
+                        <input type="password" name="password2" id="password2">
+                        <br>
+                        <label for="nickname">
+                            닉네임 : 
+                        </label>
+                        <input type="text" name="nickname" id="nickname" value="<?php echo "$name";?>">
+                        <br>
+                           <span> 성별 :</span> 
+                        <input type="radio" name="sex" id="sex" value="남" <?php if($sex=="남"){echo 'checked="checked" ';}?>>남
+                        <input type="radio" name="sex" id="sex" value="여" <?php if($sex=="여"){echo 'checked="checked" ';}?>>여
+                        <br>
+                        <label for="email">
+                            이메일 : 
+                        </label>
+                        <input type="text" name="email" id="email" value="<?php echo $email;?>">
+                        <br>
+                        <label for="phone">
+                            핸드폰번호 : 
+                        </label>
+                        <input type="text" name="phone" id="phone" value="<?php echo $phone;?>">
+                        <br>
+                        <label for="address">
+                            주소 : 
+                        </label>
+                        <input type="text" name="address" id="address" value="<?php echo $address;?>" >
+                        <br>
+                        <input type="submit" id="submit" value="저장">
+                    </form>
                     </div>
             </div>
         </div>

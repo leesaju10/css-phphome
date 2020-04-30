@@ -193,7 +193,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                             <a href='../회원가입페이지/메인_회원가입.html'>회원가입</a>
 
-                            <a href='#'>아이디/비밀번호찾기</a>
+                            <a href='./아이디비밀번호찾기.php'>아이디/비밀번호찾기</a>
 
                         </form>
 
@@ -211,7 +211,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                         <br><br>
 
-                            <a href='#'>회원정보관리 가기</a>
+                            <a href='./회원정보관리.php'>회원정보관리 가기</a>
 
                             <br><br>
 

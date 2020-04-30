@@ -57,7 +57,7 @@ if ($id !='admin') {
                             <input type='password' name='password' id='password'>
                             <input type='submit' value='Login' id='login_button'><br>
                             <a href='./메인_회원가입.php'>회원가입</a>
-                            <a href='#'>아이디/비밀번호찾기</a>
+                            <a href='./아이디비밀번호찾기.php'>아이디/비밀번호찾기</a>
                         </form>
                     </div>";}
                     
@@ -65,9 +65,9 @@ if ($id !='admin') {
                     echo "<div class='logined_form'>
                         <span>닉네임 : </span><sapn class='name'>$id</sapn>
                         <br><br>
-                            <a href='#'>회원정보관리 가기</a>
+                            <a href='./회원정보관리.php'>회원정보관리 가기</a>
                             <br><br>
-                            <a href='#'>로그아웃</a>
+                            <a href='./action_php/로그아웃.php'>로그아웃</a>
                     ";}
 		    if($id == "admin"){echo "<br><br><a href='./메인_관리자페이지.php'>관리자페이지</a></div>";}
 else{ if($id!=NULL){echo "</div>";}}

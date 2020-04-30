@@ -1,0 +1,172 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+/*reset*/
+body{
+    background-color: rgba( 226, 255, 172, 0.5 );
+}
+header { 
+    position : fixed ;
+    top : 0 ; left: 0; right : 0;
+    width: auto;
+    height: 70px;
+    background-color: black;
+    z-index: 2;
+}
+.menu_wrap{
+    width: 1024px;
+    height : 70px;
+    margin:0 auto;
+
+}
+.menu_wrap ul li {
+    margin : 0 10px;
+    padding : 23px 0;
+    float: left;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    
+}
+.menu_wrap ul li::after{
+    content:"";
+    clear: both;
+    display: block;
+}
+/* header 설정 끝*/
+.main_wrap{
+    width: 1024px;
+    height : auto;
+    margin : 0 auto;
+}
+.logo_section{
+    width: 1024px;
+    height:300px;
+    margin : 0 auto;
+}
+.main_back{
+    width:auto;
+    height:300px;
+    background-image: url(../ky.jpg);
+    background-size: 1024px 300px;
+}
+.main_back_over{
+    width:1024px;
+    height:300px;
+    position: absolute;
+    top:0px;
+    background-color: rgba( 0, 0, 0, 0.5 );
+}
+.main_logo{
+    position: absolute;
+    top : 210px;
+    display: block;
+    width: 442px;
+    height: 107px;
+    background-image: url(../logo.png);
+}
+/*main logo 끝*/
+.main_section{
+    display: table;
+    width:1024px;
+    border : 1px solid black;
+    background-color: white;
+    box-sizing: border-box;
+}
+.main_section .left{
+    display: table-cell;
+    width: 250px;
+    vertical-align: top;
+}
+.main_section .right{
+    display: table-cell;
+    width : auto;
+    border-left:1px solid black;
+}
+/*테이블 레이아웃 끝*/
+.login_form{
+    display: table;
+    width:auto;
+    padding : 20px 10px;
+}
+.login_form a{
+    color : black;
+}
+.login_form label {
+    margin : 10px 10px;
+}
+.login_form .id{
+    margin-right: 18px;
+}
+.login_form #login_button{
+    width: 230px;
+    height:40px;
+    margin : 10px 0;
+    border : 3px solid rgba(68, 98, 14, 0.5);
+    background-color: white;
+}
+/*로그인 폼 끝*/
+.logined_form{
+    margin : 20px 10px;
+}
+.logined_form a{
+    color : black;
+}
+.logined_form .name{
+    font-size: 20px;
+    font-weight: bold;
+}
+/*로그인ed 폼 끝*/
+.right{
+    padding : 20px 20px;
+    box-sizing: border-box;
+}
+.right span{
+    padding : 20px 10px;
+    font-size: 32px;
+    font-weight: bold;
+}
+.right .form {
+    margin : 20px 20px;
+    width : 600px;
+}
+.right .form span{
+    font-size : 18px;
+    font-weight : normal;
+}
+.right .form form span, label {
+    display: inline-block;
+    width : 150px;
+    padding : 10px 10px;
+    font-size : 18px;
+}
+.right .form form input {
+    width : 230px;
+}
+.right .form form #sex {
+    width : 10px;
+}
+.right .form form #submit {
+    width: 230px;
+    height:40px;
+    margin : 10px 0;
+    border : 3px solid rgba(68, 98, 14, 0.5);
+    background-color: white;
+} 
+/*write 끝*/
+.footer_wrap{
+    width: 1024px;
+    height: 50px;
+    margin: 0  auto;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+.footer_text{
+    display: inline-block;
+    margin: 18px 0;
+}
+/*footer 끝*/

@@ -16,14 +16,14 @@ mysqli_query($conn,"set names utf8");
     $sex = $_POST['sex'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-    
-    $sql = "UPDATE `Profile` SET `password` = '$password', `address` = '$address', `name` = '$nickname', `sex` = '$sex', `phone_num` = '$phone', `email` = '$email' WHERE `Profile`.`id` ='$id'";
+    $encrypted_passwd = password_hash($password, PASSWORD_DEFAULT);
+    $sql = "UPDATE `Profile` SET `password` = '$encrypted_passwd', `address` = '$address', `name` = '$nickname', `sex` = '$sex', `phone_num` = '$phone', `email` = '$email' WHERE `Profile`.`id` ='$id'";
 
     $result =  mysqli_query($conn, $sql);
     if($result){
 	echo "<script>
               	   alert( '수정 완료' );
-		   location.href='메인.php';
+		   location.href='../메인.php';
               </script>";
     }
 ?>    
