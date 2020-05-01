@@ -22,7 +22,77 @@ mysqli_query($conn,"set session character_set_client=utf8");
 mysqli_query($conn,"set session character_set_results=utf8");
 mysqli_query($conn,"set session character_set_connection=utf8");
 ?>
+<?php 
 
+
+
+	$page = 1;
+
+	if($_GET['page']!=NULL){
+
+	$page = $_GET['page'];}
+
+	
+
+	$list = 5; // 한 페이지에 보여줄 게시글 갯수
+
+	$block = 5; // 한 페이지에 보여줄 블록 갯수 
+
+
+
+        $sql = 'select count(*) as total from Profile';
+
+        $result =  mysqli_query($conn, $sql);
+
+	$tmp = mysqli_fetch_array($result); 
+
+	$num = $tmp['total'];//총 게시글 갯수 
+
+	$pageNum = ceil($num/$list);//총 페이지 갯수 
+
+
+
+	$blockNum = ceil($pageNum/$block);//총 블록 갯수 
+
+	$nowBlock = ceil($page/$block);//현재 페이지가 위치한 블록 번호 (현재 페이지랑 보여줄 블록 갯수를 나누면 현재 블록 값이 나온다.)
+
+	$s_page = ($nowBlock*$block)-($block-1);//현재 위치한 블록 * 보여줄 블록 수 는 블록에서 마지막 페이지 이므로, 보여줄 블록 수 - 1 을 거기서 빼줘야 현재 블록의 첫번째 페이지다
+
+	$e_page = ($nowBlock*$block);
+
+	if($s_page <1){ $s_page = 1;}
+
+	if($e_page >=$pageNum){ $e_page = $pageNum;}
+
+
+
+?>
+
+<?php
+
+	
+
+	$start = 0;
+
+	if($page !=NULL){
+
+	$start = $_GET['page'];
+
+	}	
+
+	echo $start;
+
+	$board_num = $start*$list-$list;
+
+	if($start==0){$board_num=0;}
+
+        $sql2 = "select * from Profile order by num desc limit $board_num, $list";
+
+        $result2 =  mysqli_query($conn, $sql2);
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -113,19 +183,13 @@ else{ if($id!=NULL){echo "</div>";}}
                             <!-- while 문으로 적용 해야 한다.-->
                                 <?php 
 
-                                $sql = 'select * from Profile';
-                                    $result =  mysqli_query($conn, $sql);
-                                if($result) {
 
-                                } else {
-                                    echo "결과 없음: ".mysqli_error($conn);
-                                }
-                                    while($row = $result->fetch_assoc()){            
-                                    $num = $row['num'];
-                                    $id = $row['id'];
-                                    $nickname = $row['name'];
-                                    $email = $row['email'];
-                                    $phone = $row['phone_num'];
+                                    while($row2 = mysqli_fetch_array($result2)){            
+                                    $num = $row2['num'];
+                                    $id = $row2['id'];
+                                    $nickname = $row2['name'];
+                                    $email = $row2['email'];
+                                    $phone = $row2['phone_num'];
                                 echo "
                                 <tr>
                                 <td>$num</td>
@@ -141,6 +205,26 @@ else{ if($id!=NULL){echo "</div>";}}
                                 ?>
                             <!-- 검색 기능 링크 연결 해야함..-->
                         </table>
+
+			<div class="list_num">
+
+			                    <a href="메인_관리자페이지.php?page=<?php if($s_page==1){echo 1;}else{echo $s_page-1;}?>">이전</a>
+
+	                <?php 
+
+	                //이전은 스타트 아래로 가면 이전 블록이 되고, 다음은 엔드 위로 가면 다음 블록이 된다.
+
+	                 for($p=$s_page; $p<=$e_page; $p++){//페이지는 시작 페이지부터 마지막 페이지 까지만 나오게 한다.
+
+	                 echo"<a href='메인_관리자페이지.php?page=$p'>$p</a> ";
+
+	                 }
+
+	                ?>
+
+                      <a href="메인_관리자페이지.php?page=<?php if($e_page<$pageNum){echo $e_page+1;} else if($e_page==$pageNum){echo $pageNum;} ?>">다음</a>			
+			
+			</div>
                         <form action="./메인_관리자페이지_회원검색.html" enctype="multipart/form-data" method = "get" onsubmit="return adSearchCheck();">
                             회원 검색 : 
                             <input type="text" id ="search" name ="search">

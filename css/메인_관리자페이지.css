@@ -133,6 +133,14 @@ header {
     padding : 5px 15px;
     border-bottom : 1px solid rgba(68, 98, 14, 0.5); 
 }
+.right .list_num {
+    text-align: center;
+}
+.right .list_num a {
+    color : black;
+    display: inline-block;
+    padding : 5px 5px;
+}
 /*table 폼 끝*/
 .right .admin_page form {
     margin : 10px 10px;
