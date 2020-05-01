@@ -338,7 +338,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                     <form action="글검색.php" method="get" onsubmit="return SearchCheck();">
 
-                        <input type="text" name ="search"><input type="submit" id ="search" value="검색">    
+                        <input type="text" name ="search" id ="search_text"><input type="submit" id ="search" value="검색" onsubmit="SearchCheck();">    
 
                     </form>
 

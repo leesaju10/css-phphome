@@ -46,37 +46,24 @@ function CheckEmail(str)
 }
 
 
-function joinCheck() {
-    id_input = document.getElementById('id');
-    id_value = id_input.value.trim();
+function rejoinCheck() {
     password_input = document.getElementById('password');
     password_value = password_input.value.trim();
-    passwordCk_input = document.getElementById('password_check');
+    passwordCk_input = document.getElementById('password2');
     passwordCk_value = passwordCk_input.value.trim();
     name_input = document.getElementById('nickname');
     name_value = name_input.value.trim();
     sex_input = document.getElementById('sex');
     sex_value = sex_input.value.trim();
-    phone_input = document.getElementById('phone_num');
+    phone_input = document.getElementById('phone');
     phone_value = phone_input.value.trim();
     email_input = document.getElementById('email');
     email_value = email_input.value.trim();
     address_input = document.getElementById('address');
     address_value = address_input.value.trim();
 
-
-    minId_length = 5;
-    maxId_lenght = 12;
-
     minpwd_length = 8;
     maxpwd_length = 15;
-
-    if(minId_length > id_value.length || maxId_lenght < id_value.length){
-        alert('ID는 5자 이상 12자 이하입니다.');
-        id_input.focus();
-        return false;
-    }
-    //id글자수 검사
 
     if(minpwd_length > password_value.length || maxpwd_length < password_value.length){
         alert('Password는 8자 이상 15자 이하입니다.');
@@ -100,11 +87,6 @@ function joinCheck() {
     }
     //email형식 검사
 
-    if (!id_value){
-        alert('ID를 입력하세요.');
-        id_input.focus();
-        return false;
-    }
     if (!password_value){
         alert('Password를 입력하세요.');
         password_input.focus();
@@ -141,11 +123,6 @@ function joinCheck() {
     }
     //빈칸 검사
 
-    if (plzno(id_value)==2){
-        alert('ID에 \", \', -, <, > 를 쓸수 없습니다.');
-        id_input.focus();
-        return false;
-    }
     if (plzno(password_value)==2){
         alert('PASSWORD에 \", \', -, <, > 를 쓸수 없습니다.');
         password_input.focus();
@@ -178,11 +155,6 @@ function joinCheck() {
     }
     //특수문자 검사
     
-    if (checkSpace(id_value)==2){
-        alert('ID에 빈칸을 쓸수 없습니다.');
-        id_input.focus();
-        return false;
-    }
     if (checkSpace(password_value)==2){
         alert('PASSWORD에 빈칸을 쓸수 없습니다.');
         password_input.focus();

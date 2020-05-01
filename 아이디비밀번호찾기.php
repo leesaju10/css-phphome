@@ -18,7 +18,7 @@ if ($id !=NULL) {
             <link rel = "stylesheet" type="text/css" href="./css/아이디비밀번호찾기.css">
         <meta charset="UTF-8">
         <title>EVERY KY</title>
-        <script src="./Join.js"></script>
+        <script src="./Emailcheck.js"></script>
 </head>
 <body>
         <header>
@@ -42,7 +42,7 @@ if ($id !=NULL) {
             <div class="main_section">
                 <span>아이디/비밀번호 찾기</span>
                 <div class="IdPwSearch">
-                    <form action="./action_php/메일전송.php" enctype="multipart/form-data" method = "post">
+                    <form action="./action_php/메일전송.php" enctype="multipart/form-data" method = "post" onsubmit="return EmailCk()">
                         <input type="text" name="email" id="email" placeholder="이메일을 입력해주세요.">
                         <br>
                         <input type="submit" id="submit" value="클릭시 정보 전송">

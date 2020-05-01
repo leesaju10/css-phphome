@@ -61,9 +61,9 @@ if ($id !=NULL) {
                         <input type="password" name="password_check" id="password_check">
                         <br>
                         <label for="name">
-                            이름  
+                            닉네임
                         </label>
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="nickname">
                         <br>
                         <label>
                         성별 

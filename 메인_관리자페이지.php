@@ -30,6 +30,8 @@ mysqli_query($conn,"set session character_set_connection=utf8");
             <link rel = "stylesheet" type="text/css" href="./css/메인_관리자페이지.css">
         <meta charset="UTF-8">
         <title>EVERY KY</title>
+        <script src="./logincheck.js"></script>
+        <script src="./adsrc.js"></script>
 </head>
 <body>
         <header>
@@ -56,7 +58,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
                     <?php
                     if($id==NULL){
                     echo "<div class='login_form'>
-                        <form action='./action_php/로그인.php' enctype='multipart/form-data' method = 'post'>
+                        <form action='./action_php/로그인.php' enctype='multipart/form-data' method = 'post' onsubmit = 'return loginCheck();'>
                             <label for='id' class='id'>
                                ID : 
                             </label>
@@ -114,7 +116,7 @@ else{ if($id!=NULL){echo "</div>";}}
                                 $sql = 'select * from Profile';
                                     $result =  mysqli_query($conn, $sql);
                                 if($result) {
-                                    echo "조회 성공";
+
                                 } else {
                                     echo "결과 없음: ".mysqli_error($conn);
                                 }
@@ -139,10 +141,10 @@ else{ if($id!=NULL){echo "</div>";}}
                                 ?>
                             <!-- 검색 기능 링크 연결 해야함..-->
                         </table>
-                        <form action="./메인_관리자페이지_회원검색.html" enctype="multipart/form-data" method = "get">
+                        <form action="./메인_관리자페이지_회원검색.html" enctype="multipart/form-data" method = "get" onsubmit="return adSearchCheck();">
                             회원 검색 : 
-                            <input type="text" name ="search">
-                        <input type="submit" value="검색">
+                            <input type="text" id ="search" name ="search">
+                        <input type="submit" value="검색" onsubmit="adSearchCheck();">
                         </form>
                     </div>
                 </div>

@@ -36,7 +36,7 @@ $id=$_SESSION['id'];
         <meta charset="UTF-8">
         <title>EVERY KY</title>
         <script src="./logincheck.js"></script>
-        <script src="./Check.js"></script>
+        <script src="./Concheck.js"></script>
 </head>
 <body>
         <header>

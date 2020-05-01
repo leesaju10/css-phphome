@@ -42,7 +42,7 @@ $address=$row['address'];
         <meta charset="UTF-8">
         <title>EVERY KY</title>
         <script src="./logincheck.js"></script>
-        <script src="./Check.js"></script>
+        <script src="./reJoin.js"></script>
 </head>
 <body>
         <header>
@@ -100,7 +100,7 @@ else{ if($id!=NULL){echo "</div>";}}
                 <div class="right">
                     <span>회원정보관리</span>
                     <div class = "form">
-                    <form action="./action_php/회원정보수정.php" method = "post">
+                    <form action="./action_php/회원정보수정.php" method = "post" onsubmit = "return rejoinCheck();">
                        <span> 아이디 : </span> <?php echo "$id";?>
                         <br>
                         <label for="password">

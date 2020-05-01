@@ -15,7 +15,7 @@ mysqli_query($conn,"set names utf8");
 $encrypted_passwd = password_hash($pw, PASSWORD_DEFAULT);
 
 
-    $name = $_POST['name'];
+    $name = $_POST['nickname'];
     $sex = $_POST['sex'];
 	$phone_num = $_POST['phone_num'];
     $email = $_POST['email'];
