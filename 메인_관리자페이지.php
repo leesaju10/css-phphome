@@ -225,7 +225,7 @@ else{ if($id!=NULL){echo "</div>";}}
                       <a href="메인_관리자페이지.php?page=<?php if($e_page<$pageNum){echo $e_page+1;} else if($e_page==$pageNum){echo $pageNum;} ?>">다음</a>			
 			
 			</div>
-                        <form action="./메인_관리자페이지_회원검색.html" enctype="multipart/form-data" method = "get" onsubmit="return adSearchCheck();">
+                        <form action="./메인_관리자페이지_search.php" enctype="multipart/form-data" method = "get" onsubmit="return adSearchCheck();">
                             회원 검색 : 
                             <input type="text" id ="search" name ="search">
                         <input type="submit" value="검색" onsubmit="adSearchCheck();">

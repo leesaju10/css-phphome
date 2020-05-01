@@ -28,7 +28,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
 <?php 
 
-
+	$search = $_GET['search'];
 
 	$page = 1;
 
@@ -44,7 +44,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
 
 
-        $sql = 'select count(*) as total from board';
+        $sql = "SELECT count(*) as total FROM board WHERE title LIKE '%".$search."%' ";
 
         $result =  mysqli_query($conn, $sql);
 
@@ -90,7 +90,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
 	if($start==0){$board_num=0;}
 
-        $sql2 = "select * from board order by num desc limit $board_num, $list";
+        $sql2 = "SELECT * FROM board WHERE title LIKE '%".$search."%' order by num desc limit $board_num, $list";
 
         $result2 =  mysqli_query($conn, $sql2);
 
@@ -307,7 +307,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                     <div class="list_num">
 
-                    <a href="커뮤니티.php?page=<?php if($s_page==1){echo 1;}else{echo $s_page-1;}?>">이전</a>
+                    <a href="커뮤니티_search.php?search=<?php echo $search;?>&page=<?php if($s_page==1){echo 1;}else{echo $s_page-1;}?>">이전</a>
 
 	                <?php 
 
@@ -315,7 +315,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
 	                 for($p=$s_page; $p<=$e_page; $p++){//페이지는 시작 페이지부터 마지막 페이지 까지만 나오게 한다.
 
-	                 echo"<a href='커뮤니티.php?page=$p'>$p</a> ";
+	                 echo"<a href='커뮤니티_search.php?search=$search&page=$p'>$p</a> ";
 
 	                 }
 
@@ -325,7 +325,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                     
 
-	                <a href="커뮤니티.php?page=<?php if($e_page<$pageNum){echo $e_page+1;} else if($e_page==$pageNum){echo $pageNum;} ?>">다음</a>
+	                <a href="커뮤니티_search.php?search=<?php echo $search;?>&page=<?php if($e_page<$pageNum){echo $e_page+1;} else if($e_page==$pageNum){echo $pageNum;} ?>">다음</a>
 
                     </div>
 

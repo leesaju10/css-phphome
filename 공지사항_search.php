@@ -28,7 +28,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
 <?php 
 
-
+	$search = $_GET['search'];
 
 	$page = 1;
 
@@ -44,7 +44,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
 
 
-        $sql = 'select count(*) as total from board';
+        $sql = "SELECT count(*) as total FROM board2 WHERE title LIKE '%".$search."%' ";
 
         $result =  mysqli_query($conn, $sql);
 
@@ -90,7 +90,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
 	if($start==0){$board_num=0;}
 
-        $sql2 = "select * from board order by num desc limit $board_num, $list";
+        $sql2 = "SELECT * FROM board2 WHERE title LIKE '%".$search."%' order by num desc limit $board_num, $list";
 
         $result2 =  mysqli_query($conn, $sql2);
 
@@ -115,6 +115,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
         <title>EVERY KY</title>
         <script src="./logincheck.js"></script>
         <script src="./SearchChk.js"></script>
+
 
 </head>
 
@@ -226,7 +227,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                 <div class="right">
 
-                    <span>커뮤니티</span> 
+                    <span>공지사항</span> 
 
                     <table>
 
@@ -287,7 +288,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                         			<td>$num</td>
 
-                        			<td><a href='./글읽기.php?idx=$num'>$title</td>
+                        			<td><a href='./글읽기_공지사항.php?idx=$num'>$title</td>
 
                         			<td>$writer</td>
 
@@ -307,7 +308,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                     <div class="list_num">
 
-                    <a href="커뮤니티.php?page=<?php if($s_page==1){echo 1;}else{echo $s_page-1;}?>">이전</a>
+                    <a href="공지사항_search.php?search=<?php echo $search;?>&page=<?php if($s_page==1){echo 1;}else{echo $s_page-1;}?>">이전</a>
 
 	                <?php 
 
@@ -315,7 +316,7 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
 	                 for($p=$s_page; $p<=$e_page; $p++){//페이지는 시작 페이지부터 마지막 페이지 까지만 나오게 한다.
 
-	                 echo"<a href='커뮤니티.php?page=$p'>$p</a> ";
+	                 echo"<a href='공지사항_search.php?search=$search&page=$p'>$p</a> ";
 
 	                 }
 
@@ -325,19 +326,19 @@ mysqli_query($conn,"set session character_set_connection=utf8");
 
                     
 
-	                <a href="커뮤니티.php?page=<?php if($e_page<$pageNum){echo $e_page+1;} else if($e_page==$pageNum){echo $pageNum;} ?>">다음</a>
+	                <a href="공지사항_search.php?search=<?php echo $search;?>&page=<?php if($e_page<$pageNum){echo $e_page+1;} else if($e_page==$pageNum){echo $pageNum;} ?>">다음</a>
 
                     </div>
 
 
 
-                    <a href="./메인_글쓰기.php" style="color: black;">글쓰기</a>
+                    <a href="./메인_글쓰기_공지사항.php" style="color: black;">글쓰기</a>
 
                     <!--검색 구현 해야함-->
 
-                    <form action="커뮤니티_search.php" method="get" onsubmit="return SearchCheck();">
+                    <form action="공지사항_search.php" method="get" onsubmit="return SearchCheck();">
 
-                        <input type="text" name ="search" id="search_text"><input type="submit" id ="search" value="검색" onsubmit="SearchCheck();">    
+                        <input type="text" name ="search" id ="search_text"><input type="submit" id ="search" value="검색" onsubmit="SearchCheck();">    
 
                     </form>
 
